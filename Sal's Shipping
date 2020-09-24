@@ -1,0 +1,42 @@
+# Function for the cost of ground shipping
+def ground_shipping(weight):
+  if weight <= 2:
+    return weight * 1.5 + 20
+  elif 2 < weight <= 6:
+    return weight * 3 + 20
+  elif 6 < weight <= 10:
+    return weight * 4 + 20
+  else:
+    return weight * 4.75 + 20
+
+# Test your function for a package that weighs 8.4 pounds. The shipping cost should be $53.60.  
+print(ground_shipping(8.4))
+
+# Create a variable for the cost of premium gound shipping.
+premium_ground_shipping = 125
+
+# Function for the cost of drone shipping
+def drone_shipping(weight):
+  if weight <= 2:
+    return weight * 4.5
+  elif 2 < weight <= 6:
+    return weight * 9
+  elif 6 < weight <= 10:
+    return weight * 12
+  else:
+    return weight * 14.25
+# Test your function for a package that weighs 1.5 pounds. The shipping cost should be $6.75.  
+print(drone_shipping(1.5))
+
+# Using those two functions for ground shipping cost and drone shipping cost, as well as the cost of premium ground shipping, write a function that takes one parameter, weight and prints a statement that tells the user
+def cheapest_shipping(weight):
+  if ground_shipping(weight) < drone_shipping(weight) and ground_shipping(weight) < premium_ground_shipping:
+    print("The cheapest shipping method is ground shipping. It will cost you $" + str(ground_shipping(weight)) + ".")
+  elif drone_shipping(weight) < ground_shipping(weight) and drone_shipping(weight) < premium_ground_shipping:
+    print("The cheapest shipping method is drone shipping. It will cost you $" + str(drone_shipping(weight)) + ".")
+  else:
+    print("The cheapest shipping method is premium ground shipping. It will cost you $" + str(premium_ground_shipping) + ".")
+
+
+cheapest_shipping(4.8)
+cheapest_shipping(41.5)
